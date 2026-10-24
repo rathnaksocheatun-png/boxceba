@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="km" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Ce Diamond Store - Promoter & BA Registration Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Kantumruy Pro & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300..700;1,300..700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neonOrange: '#FF6B00',
+                        neonGreen: '#00FF87',
+                        neonBlue: '#00F0FF',
+                        neonPink: '#FF007F',
+                        eggYolk: '#FFD700',
+                        darkBg: '#05070f',
+                        cardBg: 'rgba(12, 17, 33, 0.75)'
+                    },
+                    fontFamily: {
+                        khmer: ['"Kantumruy Pro"', 'sans-serif'],
+                        outfit: ['"Outfit"', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'sparkle': 'sparkle 1.8s infinite ease-in-out alternate',
+                        'float': 'float 4s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite linear'
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.4), 0 0 30px rgba(255, 0, 127, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(255, 107, 0, 0.7), 0 0 50px rgba(0, 255, 135, 0.5)' }
+                        },
+                        sparkle: {
+                            '0%': { transform: 'scale(0.85) rotate(0deg)', opacity: '0.6' },
+                            '100%': { transform: 'scale(1.25) rotate(180deg)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Kantumruy Pro', 'Outfit', sans-serif;
+            background-color: #05070f;
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+
+        /* Canvas Falling Money & Diamond Animation */
+        #fallingCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Luxury Neon Glow Styles */
+        .text-glow-gradient {
+            background: linear-gradient(135deg, #FF6B00 0%, #FFD700 25%, #00FF87 50%, #00F0FF 75%, #FF007F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
+        }
+
+        .text-orange-glow { color: #FF6B00; text-shadow: 0 0 10px rgba(255, 107, 0, 0.8); }
+        .text-green-glow { color: #00FF87; text-shadow: 0 0 10px rgba(0, 255, 135, 0.8); }
+        .text-blue-glow { color: #00F0FF; text-shadow: 0 0 10px rgba(0, 240, 255, 0.8); }
+        .text-pink-glow { color: #FF007F; text-shadow: 0 0 10px rgba(255, 0, 127, 0.8); }
+        .text-yolk-glow { color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8); }
+
+        .neon-card {
+            background: rgba(11, 16, 31, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .neon-card-blue:hover {
+            border-color: #00F0FF;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .neon-card-pink:hover {
+            border-color: #FF007F;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.35), inset 0 0 15px rgba(255, 0, 127, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+            pointer-events: none;
+            opacity: 0.35;
+            z-index: 0;
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #05070f; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #FF6B00, #FF007F, #00F0FF);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col justify-between selection:bg-neonPink selection:text-white">
+
+    <!-- CANVAS ANIMATION (DOLLAR & DIAMONDS) -->
+    <canvas id="fallingCanvas"></canvas>
+
+    <!-- Ambient Glowing Background Circles -->
+    <div class="glow-orb w-96 h-96 bg-neonPink top-0 -left-20 animate-pulse"></div>
+    <div class="glow-orb w-96 h-96 bg-neonBlue top-[35%] -right-20 animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="glow-orb w-80 h-80 bg-neonOrange bottom-[20%] left-[25%] animate-pulse" style="animation-delay: 2s;"></div>
+    <div class="glow-orb w-96 h-96 bg-neonGreen bottom-0 -right-10 animate-pulse" style="animation-delay: 1.5s;"></div>
+
+    <!-- MAIN WRAPPER -->
+    <div class="relative z-10 flex-grow flex flex-col items-center justify-start w-full max-w-xl mx-auto min-h-screen pb-24 shadow-2xl bg-[#070b16]/90 border-x border-slate-800/80">
+
+        <!-- HEADER BAR -->
+        <header class="w-full px-5 py-4 flex items-center justify-between border-b border-slate-800/80 sticky top-0 bg-[#070b16]/95 backdrop-blur-md z-40">
+            <!-- LOGO BRANDING -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="goHome()">
+                <div class="relative group">
+                    <div id="headerLogoContainer" class="w-12 h-12 rounded-xl bg-gradient-to-tr from-neonOrange via-neonPink to-neonBlue p-[2px] shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+                        <div id="headerLogoWrapper" class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center overflow-hidden">
+                            <i id="defaultHeaderLogo" class="fa-solid fa-gem text-2xl text-neonBlue"></i>
+                        </div>
+                    </div>
+                    <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonGreen opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-neonGreen"></span>
+                    </span>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <span id="siteTitleNav" class="font-black text-xl tracking-wider text-white font-outfit">BOX CE</span>
+                        <span class="text-[10px] font-extrabold bg-gradient-to-r from-neonBlue via-neonPink to-neonGreen text-black px-2 py-0.5 rounded-full uppercase tracking-wider font-outfit shadow-[0_0_12px_rgba(0,240,255,0.6)]">
+                            PRO
+                        </span>
+                    </div>
+                    <span class="text-[10px] tracking-widest text-yolk-glow uppercase font-bold font-outfit">
+                        Content Creator Member
+                    </span>
+                </div>
+            </div>
+
+            <!-- Header Menu / Admin Button -->
+            <div class="flex items-center gap-2">
+                <button onclick="openAdminModal()" title="Admin Panel" class="px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-neonOrange/20 border border-slate-700/80 hover:border-neonOrange text-xs font-bold text-slate-300 hover:text-neonOrange transition flex items-center gap-1.5 shadow-[0_0_10px_rgba(255,107,0,0.2)]">
+                    <i class="fa-solid fa-user-shield text-neonOrange"></i>
+                    <span>Admin</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTAINER CONTENT -->
+        <main class="w-full px-4 py-6 flex flex-col gap-6">
+
+            <!-- HERO PROMOTIONAL BANNER -->
+            <div class="relative overflow-hidden rounded-3xl p-6 border border-slate-700/60 bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 shadow-[0_0_30px_rgba(0,240,255,0.2)]">
+                <div class="absolute -right-12 -bottom-12 w-40 h-40 bg-neonPink/25 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-12 -top-12 w-40 h-40 bg-neonBlue/25 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col items-start">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-neonPink/20 via-neonOrange/20 to-neonGreen/20 text-neonGreen border border-neonGreen/40 mb-3 shadow-[0_0_15px_rgba(0,255,135,0.3)]">
+                        <i class="fa-solid fa-sparkles text-eggYolk animate-sparkle"></i>
+                        <span>JOIN THE BOX CE TEAM</span>
+                    </span>
+
+                    <h1 id="heroTitle" class="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">
+                        ចូលរួមជាផ្នែកមួយនៃក្រុមការងារ <span class="text-glow-gradient">Box Ce</span>
+                    </h1>
+
+                    <p id="heroDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
+                        ចូលរួមជាមួយក្រុមការងារ Box Ce ក្នុងតួនាទីជា Promoter ឬ Brand Ambassador (BA) ដើម្បីបង្ហាញសមត្ថភាព ផ្សព្វផ្សាយសេវាកម្មរបស់យើង និងរីកចម្រើនជាមួយក្រុមការងារ។
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 w-full">
+                        <button onclick="scrollToRegister()" class="flex-1 min-w-[140px] py-3 px-5 rounded-2xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-gradient-to-r from-neonOrange via-neonPink to-neonBlue hover:opacity-95 transition shadow-[0_0_20px_rgba(255,107,0,0.5)] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                            <span>ចុះឈ្មោះឥឡូវនេះ</span>
+                        </button>
+                        <a href="#aboutPositions" class="py-3 px-5 rounded-2xl font-bold text-xs text-slate-200 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-neonBlue transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-info text-neonBlue"></i>
+                            <span>ស្វែងយល់បន្ថែម</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POSITION CARDS (KHMER) -->
+            <div id="aboutPositions" class="flex flex-col gap-5">
+                <div class="text-center my-1">
+                    <h2 class="text-lg font-extrabold text-white">តួនាទីដែលត្រូវការជ្រើសរើស</h2>
+                    <p class="text-xs text-slate-400">សូមជ្រើសរើសតួនាទីដែលស័ក្តិសមជាមួយអ្នក</p>
+                </div>
+
+                <!-- CARD 1: WEBSITE PROMOTER -->
+                <div class="neon-card neon-card-blue rounded-2xl p-5 relative overflow-hidden border border-neonBlue/30">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-neonBlue/15 border border-neonBlue/50 flex items-center justify-center text-neonBlue text-xl shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-base text-blue-glow">អ្នកផ្សព្វផ្សាយគេហទំព័រ</h3>
+                            <span class="text-[11px] text-slate-400 font-outfit font-semibold uppercase tracking-wider">(Website Promoter)</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonBlue text-sm mt-0.5 shrink-0"></i>
+                            <span>ចែករំលែក និងផ្សព្វផ្សាយគេហទំព័រ Box Ce Diamond Store នៅលើបណ្តាញសង្គមរបស់អ្នក។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonBlue text-sm mt-0.5 shrink-0"></i>
+                            <span>បង្កើតវីដេអូ និងអត្ថបទផ្សព្វផ្សាយដែលមានការទាក់ទាញ។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonBlue text-sm mt-0.5 shrink-0"></i>
+                            <span>ណែនាំសេវាកម្ម បញ្ចូលពេជ្រ Box Ce ទៅកាន់សហគមន៍ហ្គេម និងអតិថិជន។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonBlue text-sm mt-0.5 shrink-0"></i>
+                            <span>ជួយបង្កើនចំនួនអ្នកចូលមើលគេហទំព័រ និងការយល់ដឹងអំពីម៉ាកយីហោ Box Ce។</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="selectRoleAndScroll('Promoter')" class="w-full py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-gradient-to-r from-neonBlue via-cyan-300 to-neonGreen hover:opacity-95 transition shadow-[0_0_20px_rgba(0,240,255,0.4)] flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span>ជ្រើសរើសតួនាទី PROMOTER</span>
+                    </button>
+                </div>
+
+                <!-- CARD 2: BRAND AMBASSADOR (BA) -->
+                <div class="neon-card neon-card-pink rounded-2xl p-5 relative overflow-hidden border border-neonPink/30">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-neonPink/15 border border-neonPink/50 flex items-center justify-center text-neonPink text-xl shadow-[0_0_15px_rgba(255,0,127,0.4)]">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-extrabold text-base text-pink-glow">តំណាងម៉ាកយីហោ</h3>
+                            <span class="text-[11px] text-slate-400 font-outfit font-semibold uppercase tracking-wider">(Brand Ambassador - BA)</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-2.5 mb-6 text-xs text-slate-200">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonPink text-sm mt-0.5 shrink-0"></i>
+                            <span>ធ្វើជាតំណាងផ្លូវការរបស់ Box Ce Diamond Store នៅលើបណ្តាញសង្គម។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonPink text-sm mt-0.5 shrink-0"></i>
+                            <span>ផលិតមាតិកាវីដេអូប្រកបដោយភាពច្នៃប្រឌិតខ្ពស់ ដើម្បីណែនាំសេវាកម្ម Box Ce។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonPink text-sm mt-0.5 shrink-0"></i>
+                            <span>ចូលរួមយ៉ាងសកម្មក្នុងយុទ្ធនាការផ្សព្វផ្សាយ ព្រឹត្តិការណ៍ និងការ Live ផ្ទាល់។</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonPink text-sm mt-0.5 shrink-0"></i>
+                            <span>ជួយកសាងរូបភាពម៉ាកយីហោ Box Ce ឱ្យកាន់តែមានឈ្មោះបោះសំឡេង និងគួរឱ្យទុកចិត្ត។</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="selectRoleAndScroll('Brand Ambassador')" class="w-full py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-neonPink via-purple-600 to-neonOrange hover:opacity-95 transition shadow-[0_0_20px_rgba(255,0,127,0.4)] flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-gem text-eggYolk"></i>
+                        <span>ជ្រើសរើសតួនាទី BA</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- REGISTRATION FORM SECTION -->
+            <div id="registerFormSection" class="neon-card rounded-3xl p-6 border border-slate-700/80 shadow-[0_0_25px_rgba(0,0,0,0.5)]">
+                <div class="text-center mb-6">
+                    <span class="inline-block p-3 rounded-2xl bg-gradient-to-tr from-neonOrange to-neonPink text-white text-xl mb-2 shadow-[0_0_15px_rgba(255,107,0,0.4)]">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </span>
+                    <h2 class="text-xl font-extrabold text-white">ចុះឈ្មោះចូលរួមក្រុមការងារ Box Ce</h2>
+                    <p class="text-xs text-slate-300 mt-1">សូមបំពេញព័ត៌មានខាងក្រោមឱ្យបានត្រឹមត្រូវ ដើម្បីដាក់ពាក្យចូលរួមជាមួយយើង។</p>
+                </div>
+
+                <form id="publicRegisterForm" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
+
+                    <!-- Field 1: Account Name -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1.5">
+                            ឈ្មោះគណនី TikTok ឬ Facebook Page <span class="text-neonPink">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-user-tag text-xs"></i>
+                            </span>
+                            <input type="text" id="regAccountName" required placeholder="បញ្ជូលឈ្មោះគណនីរបស់អ្នក..." 
+                                   class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-3.5 py-3 text-xs text-white focus:outline-none focus:border-neonBlue focus:ring-1 focus:ring-neonBlue transition">
+                        </div>
+                    </div>
+
+                    <!-- Field 2: Social Media Link -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1.5">
+                            Link គណនី TikTok ឬ Facebook Page <span class="text-neonPink">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-link text-xs"></i>
+                            </span>
+                            <input type="url" id="regAccountLink" required placeholder="https://www.tiktok.com/@username" 
+                                   class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-3.5 py-3 text-xs text-white focus:outline-none focus:border-neonBlue focus:ring-1 focus:ring-neonBlue transition">
+                        </div>
+                    </div>
+
+                    <!-- Field 3: Nickname -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1.5">
+                            Nickname ឬឈ្មោះដែលគេស្គាល់អ្នក <span class="text-neonPink">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-signature text-xs"></i>
+                            </span>
+                            <input type="text" id="regNickname" required placeholder="បញ្ចូលឈ្មោះហៅក្រៅរបស់អ្នក..." 
+                                   class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-3.5 py-3 text-xs text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition">
+                        </div>
+                    </div>
+
+                    <!-- Field 4: Promotional Video Link -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-1.5">
+                            Link វីដេអូដែលអ្នកបាន Post ផ្សព្វផ្សាយអំពី Box Ce <span class="text-neonPink">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                                <i class="fa-solid fa-video text-xs"></i>
+                            </span>
+                            <input type="url" id="regVideoLink" required placeholder="បញ្ចូល Link វីដេអូដែលអ្នកបានបង្ហោះ..." 
+                                   class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-3.5 py-3 text-xs text-white focus:outline-none focus:border-neonPink focus:ring-1 focus:ring-neonPink transition">
+                        </div>
+                    </div>
+
+                    <!-- Field 5: Application Position (Radio Cards) -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-200 mb-2">
+                            តើអ្នកចង់ចូលរួមក្នុងតួនាទីណា? <span class="text-neonPink">*</span>
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="regPosition" value="Website Promoter" checked class="peer sr-only">
+                                <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 text-center peer-checked:border-neonBlue peer-checked:bg-neonBlue/10 peer-checked:text-neonBlue transition">
+                                    <span class="block text-xs font-bold">Promoter</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="regPosition" value="Brand Ambassador" class="peer sr-only">
+                                <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 text-center peer-checked:border-neonPink peer-checked:bg-neonPink/10 peer-checked:text-neonPink transition">
+                                    <span class="block text-xs font-bold">Brand Ambassador (BA)</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="regPosition" value="Both Promoter & BA" class="peer sr-only">
+                                <div class="p-3 rounded-xl bg-slate-900 border border-slate-700 text-center peer-checked:border-neonGreen peer-checked:bg-neonGreen/10 peer-checked:text-neonGreen transition">
+                                    <span class="block text-xs font-bold">Promoter & BA</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Field 6: Motivation and Commitment -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-xs font-bold text-slate-200">
+                                មូលហេតុ  <span class="text-neonPink">*</span>
+                            </label>
+                            <span id="charCounter" class="text-[11px] text-slate-400 font-mono">0 / 50 最小</span>
+                        </div>
+                        <textarea id="regMotivation" required rows="4" oninput="updateCharCounter()" placeholder="សូមប្រាប់យើងអំពីមូលហេតុដែលអ្នកចង់ធ្វើជា Promoter ឬ  BA របស់ BoxCe។ហើយតើសព្វថ្ងៃអ្នកកំពុងសិក្សាឬក៏បានបញ្ចប់ការសិក្សា?តើផលលំបាកនៃការប្រលោកក្នុងវិស័យContent Creatorរបស់អ្នកមានប៉ុន្មានចំណុច?អ្វីខ្លះ?ក្រៅពីជំនាញកាត់តវីដេអូgameតើអ្នកមានជំនាញអ្វីខ្លះទៀត..." 
+                                  class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-eggYolk focus:ring-1 focus:ring-eggYolk transition"></textarea>
+                        <p id="motivationErr" class="text-[11px] text-neonPink mt-1 hidden font-bold">
+                            * សូមសរសេរយ៉ាងហោចណាស់ 50 តួអក្សរ។
+                        </p>
+                    </div>
+
+                    <!-- Terms Agreement -->
+                    <div class="flex items-start gap-2 pt-1">
+                        <input type="checkbox" id="regPrivacyConsent" required class="mt-1 rounded bg-slate-900 border-slate-700 text-neonBlue focus:ring-neonBlue">
+                        <label for="regPrivacyConsent" class="text-[11px] text-slate-300 leading-relaxed">
+                            ខ្ញុំយល់ព្រមផ្ដល់ព័ត៌មានខាងលើត្រឹមត្រូវ និងអនុញ្ញាតឱ្យក្រុមការងារ Box Ce ពិនិត្យពាក្យស្នើសុំនេះ។
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider text-slate-950 bg-gradient-to-r from-neonGreen via-neonBlue to-neonPink hover:opacity-95 transition shadow-[0_0_25px_rgba(0,255,135,0.4)] flex items-center justify-center gap-2 mt-2">
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                        <span>ដាក់ពាក្យចុះឈ្មោះ (SUBMIT APPLICATION)</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- CONTACT & SOCIAL LINKS -->
+            <div class="grid grid-cols-2 gap-3 mt-2">
+                <a id="telegramLinkBtn" href="https://t.me/zicksiik" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-slate-900 border border-neonBlue/40 text-neonBlue text-xs font-bold hover:bg-neonBlue/10 transition shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                    <i class="fa-brands fa-telegram text-xl text-neonBlue"></i>
+                    <span>Telegram Channel</span>
+                </a>
+                <a id="facebookLinkBtn" href="https://www.facebook.com/share/19ehaSKpKL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-slate-900 border border-neonPink/40 text-neonPink text-xs font-bold hover:bg-neonPink/10 transition shadow-[0_0_15px_rgba(255,0,127,0.2)]">
+                    <i class="fa-brands fa-facebook text-xl text-neonPink"></i>
+                    <span>Facebook Page</span>
+                </a>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="text-center py-6 border-t border-slate-800/80 mt-4 text-xs text-slate-500">
+                <p>© 2026 Box Ce Diamond Store. All Rights Reserved.</p>
+                <p class="text-[10px] text-slate-600 mt-1">Official Promoter & Brand Ambassador Registration Platform</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- MODAL: SUCCESS CONFIRMATION -->
+    <div id="successModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="neon-card w-full max-w-sm rounded-3xl p-6 border border-neonGreen/60 text-center relative animate-float">
+            <div class="w-16 h-16 rounded-full bg-neonGreen/20 border border-neonGreen text-neonGreen flex items-center justify-center text-3xl mx-auto mb-4 shadow-[0_0_25px_rgba(0,255,135,0.5)]">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-white mb-2">ចុះឈ្មោះបានជោគជ័យ!</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                សូមអរគុណចំពោះការដាក់ពាក្យចូលរួមជាមួយ Box Ce! ព័ត៌មានរបស់អ្នកត្រូវបានរក្សាទុកដោយជោគជ័យ។ ក្រុមការងារនឹងពិនិត្យពាក្យស្នើសុំរបស់អ្នក។
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-neonGreen hover:bg-neonGreen/90 transition shadow-[0_0_15px_rgba(0,255,135,0.4)]">
+                យល់ព្រម (OK)
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL: ADMIN PANEL & LOGIN -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="neon-card w-full max-w-2xl rounded-3xl p-6 border border-slate-700/80 relative max-h-[90vh] flex flex-col">
+            <!-- Close Button -->
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- LOGIN VIEW -->
+            <div id="adminLoginView" class="py-6">
+                <div class="text-center mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-slate-900 border border-neonOrange/50 flex items-center justify-center text-neonOrange text-2xl mx-auto mb-3 shadow-[0_0_20px_rgba(255,107,0,0.3)]">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-white">ADMIN PANEL LOGIN</h3>
+                    <p class="text-xs text-slate-400 mt-1">ចូលប្រើប្រាស់ប្រព័ន្ធគ្រប់គ្រងពាក្យស្នើសុំ Box Ce</p>
+                </div>
+
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4 max-w-sm mx-auto">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-300 mb-1.5">ចូលបានតែក្រុមការងារBoxCe និង Owner BoxCe ប៉ុណ្ណោះ ! (Admin Password)</label>
+                        <input type="password" id="adminPasswordInput" required placeholder="Enter password..." 
+                               class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-neonOrange transition">
+                    </div>
+
+                    <div id="loginErrorMsg" class="text-xs text-neonPink hidden text-center font-bold">
+                        <i class="fa-solid fa-circle-exclamation mr-1"></i> ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ!
+                    </div>
+
+                    <button type="submit" class="w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-neonOrange to-neonPink hover:opacity-95 transition shadow-[0_0_20px_rgba(255,107,0,0.4)]">
+                        LOG IN TO DASHBOARD
+                    </button>
+                </form>
+            </div>
+
+            <!-- DASHBOARD VIEW -->
+            <div id="adminDashboardView" class="hidden flex-col h-full overflow-hidden">
+                <!-- Nav / Header -->
+                <div class="flex flex-wrap items-center justify-between border-b border-slate-800 pb-3 mb-4 gap-2">
+                    <div>
+                        <h3 class="font-extrabold text-base text-neonGreen flex items-center gap-2">
+                            <i class="fa-solid fa-gauge-high"></i> ADMIN DASHBOARD
+                        </h3>
+                        <p class="text-[11px] text-slate-400">គ្រប់គ្រងពាក្យស្នើសុំ និងការកំណត់ Website</p>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportApplicationsCSV()" class="px-3 py-1.5 rounded-lg bg-emerald-950 border border-emerald-600/50 text-emerald-400 text-xs font-bold hover:bg-emerald-900 transition flex items-center gap-1">
+                            <i class="fa-solid fa-file-csv"></i> Export CSV
+                        </button>
+                        <button onclick="adminLogout()" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-bold text-slate-300 hover:text-neonPink border border-slate-700">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Tabs -->
+                <div class="flex border-b border-slate-800 mb-4 gap-4 text-xs font-bold">
+                    <button onclick="switchAdminTab('apps')" id="tabAppsBtn" class="pb-2 border-b-2 border-neonBlue text-neonBlue">
+                        <i class="fa-solid fa-users mr-1"></i> ពាក្យស្នើសុំ (<span id="appCountBadge">0</span>)
+                    </button>
+                    <button onclick="switchAdminTab('settings')" id="tabSettingsBtn" class="pb-2 border-b-2 border-transparent text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-gear mr-1"></i> ការកំណត់ Branding & Logo
+                    </button>
+                </div>
+
+                <!-- TAB 1: APPLICATIONS LIST -->
+                <div id="adminTabApps" class="flex-grow flex flex-col overflow-hidden">
+                    <!-- Filters -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                        <input type="text" id="adminSearchInput" oninput="renderAdminApplications()" placeholder="ស្វែងរកតាម Nickname ឬ ឈ្មោះ..." 
+                               class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-neonBlue">
+                        
+                        <select id="adminStatusFilter" onchange="renderAdminApplications()" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-neonBlue">
+                            <option value="ALL">គ្រប់ ស្ថានភាព (All Status)</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Under Review">Under Review</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+
+                    <!-- Applications List Container -->
+                    <div id="applicationsContainer" class="flex-grow overflow-y-auto space-y-3 pr-1">
+                    </div>
+                </div>
+
+                <!-- TAB 2: WEBSITE LOGO & BRANDING SETTINGS -->
+                <div id="adminTabSettings" class="hidden flex-grow overflow-y-auto space-y-4 pr-1">
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <h4 class="text-xs font-bold text-neonBlue mb-3">
+                            <i class="fa-solid fa-image mr-1"></i> ផ្លាស់ប្តូរ Logo Website (Logo Management)
+                        </h4>
+                        
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-16 h-16 rounded-xl bg-slate-950 border border-slate-700 flex items-center justify-center overflow-hidden p-1">
+                                <img id="adminLogoPreview" src="" alt="Logo" class="max-w-full max-h-full object-contain hidden">
+                                <i id="adminLogoPlaceholder" class="fa-solid fa-gem text-3xl text-neonBlue"></i>
+                            </div>
+                            <div class="flex-1">
+                                <input type="file" id="logoFileInput" accept="image/png, image/jpeg, image/webp, image/svg+xml" class="text-xs text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-neonBlue/20 file:text-neonBlue hover:file:bg-neonBlue/30">
+                                <p class="text-[10px] text-slate-500 mt-1">គាំទ្រ PNG, JPG, WEBP, SVG (ប្រព័ន្ធនឹងរក្សាទុកក្នុង Database ស្វ័យប្រវត្តិ)</p>
+                            </div>
+                        </div>
+
+                        <button onclick="saveNewLogo()" class="py-2 px-4 rounded-lg bg-neonBlue text-slate-950 text-xs font-bold hover:bg-neonBlue/90 transition">
+                            រក្សាទុក Logo ថ្មី (Save Logo)
+                        </button>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <h4 class="text-xs font-bold text-neonGreen mb-3">
+                            <i class="fa-solid fa-sliders mr-1"></i> កែប្រែព័ត៌មាន Hero & Contact Links
+                        </h4>
+                        
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">Telegram Link</label>
+                                <input type="text" id="settingTelegram" value="https://t.me/zicksiik" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-300 mb-1">Facebook Link</label>
+                                <input type="text" id="settingFacebook" value="https://www.facebook.com/share/19ehaSKpKL/?mibextid=wwXIfr" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs text-white">
+                            </div>
+                            <button onclick="saveSiteSettings()" class="py-2 px-4 rounded-lg bg-neonGreen text-slate-950 text-xs font-bold hover:bg-neonGreen/90 transition">
+                                រក្សាទុកការកំណត់ (Save Settings)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-x-full transition-transform duration-300 ease-out bg-slate-900 border border-neonGreen text-white px-5 py-3.5 rounded-2xl shadow-[0_0_20px_rgba(0,255,135,0.4)] flex items-center gap-3 max-w-xs">
+        <i class="fa-solid fa-circle-check text-neonGreen text-lg"></i>
+        <span id="toastMsg" class="text-xs font-medium">ប្រតិបត្តិការជោគជ័យ!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // INDEXEDDB DATABASE SETUP
+        const DB_NAME = 'BoxCeStoreDB';
+        const DB_VERSION = 1;
+        let db = null;
+
+        function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                request.onupgradeneeded = (e) => {
+                    const database = e.target.result;
+                    if (!database.objectStoreNames.contains('applications')) {
+                        database.createObjectStore('applications', { keyPath: 'id' });
+                    }
+                    if (!database.objectStoreNames.contains('settings')) {
+                        database.createObjectStore('settings', { keyPath: 'key' });
+                    }
+                };
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve(db);
+                };
+                request.onerror = (e) => reject(e);
+            });
+        }
+
+        // IndexedDB Application Helpers
+        async function idb_getAllApplicationsFromDB() {
+            return new Promise((resolve) => {
+                if (!db) return resolve([]);
+                const tx = db.transaction('applications', 'readonly');
+                const store = tx.objectStore('applications');
+                const req = store.getAll();
+                req.onsuccess = () => resolve(req.result || []);
+                req.onerror = () => resolve([]);
+            });
+        }
+
+        async function idb_saveApplicationToDB(appData) {
+            return new Promise((resolve) => {
+                const tx = db.transaction('applications', 'readwrite');
+                const store = tx.objectStore('applications');
+                store.put(appData);
+                tx.oncomplete = () => resolve(true);
+            });
+        }
+
+        async function idb_deleteApplicationFromDB(id) {
+            return new Promise((resolve) => {
+                const tx = db.transaction('applications', 'readwrite');
+                const store = tx.objectStore('applications');
+                store.delete(id);
+                tx.oncomplete = () => resolve(true);
+            });
+        }
+
+        async function idb_saveSettingToDB(key, value) {
+            return new Promise((resolve) => {
+                const tx = db.transaction('settings', 'readwrite');
+                const store = tx.objectStore('settings');
+                store.put({ key, value });
+                tx.oncomplete = () => resolve(true);
+            });
+        }
+
+        async function idb_getSettingFromDB(key) {
+            return new Promise((resolve) => {
+                if (!db) return resolve(null);
+                const tx = db.transaction('settings', 'readonly');
+                const store = tx.objectStore('settings');
+                const req = store.get(key);
+                req.onsuccess = () => resolve(req.result ? req.result.value : null);
+                req.onerror = () => resolve(null);
+            });
+        }
+
+        // ===== SERVER-BACKED STORAGE (data persists for everyone, on every device) =====
+        let ADMIN_PASSWORD = '';
+        let settingsCache = null;
+
+        async function apiCall(method, url, body) {
+            const headers = { 'Content-Type': 'application/json' };
+            if (ADMIN_PASSWORD) headers['x-admin-password'] = ADMIN_PASSWORD;
+            const res = await fetch(url, { method, headers, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+            if (!res.ok) throw new Error('API ' + res.status);
+            return res.json();
+        }
+
+        async function getAllApplicationsFromDB() {
+            try { return (await apiCall('GET', '/api/applications')).items || []; }
+            catch (err) { console.error(err); showToast("មិនអាចទាញទិន្ន័យពី Server បានទេ", "error"); return []; }
+        }
+
+        async function saveApplicationToDB(appData) {
+            try { await apiCall('PUT', '/api/applications/' + encodeURIComponent(appData.id), appData); return true; }
+            catch (err) { console.error(err); showToast("រក្សាទុកមិនបានទេ សូមព្យាយាមម្តងទៀត", "error"); throw err; }
+        }
+
+        async function deleteApplicationFromDB(id) {
+            try { await apiCall('DELETE', '/api/applications/' + encodeURIComponent(id)); return true; }
+            catch (err) { console.error(err); showToast("លុបមិនបានទេ", "error"); throw err; }
+        }
+
+        async function saveSettingToDB(key, value) {
+            try {
+                await apiCall('PUT', '/api/settings/' + encodeURIComponent(key), { value });
+                if (settingsCache) settingsCache[key] = value;
+                return true;
+            } catch (err) { console.error(err); showToast("រក្សាទុកការកំណត់មិនបានទេ", "error"); throw err; }
+        }
+
+        async function getSettingFromDB(key) {
+            if (!settingsCache) {
+                try { settingsCache = (await apiCall('GET', '/api/settings')).settings || {}; }
+                catch (err) { console.error(err); settingsCache = {}; }
+            }
+            return settingsCache[key] ?? null;
+        }
+
+        async function verifyAdminPassword(pass) {
+            try {
+                const res = await fetch('/api/admin/login', { method: 'POST', headers: { 'x-admin-password': pass } });
+                return res.ok;
+            } catch (err) { console.error(err); return false; }
+        }
+
+        // One-time: push any old data stored in this browser (previous IndexedDB version) up to the server
+        async function migrateLocalDataToServer() {
+            try {
+                if (localStorage.getItem('boxce_migrated_v1')) return;
+                const localApps = await idb_getAllApplicationsFromDB();
+                for (const a of localApps) { await apiCall('PUT', '/api/applications/' + encodeURIComponent(a.id), a); }
+                for (const k of ['customLogo', 'telegramLink', 'facebookLink']) {
+                    const v = await idb_getSettingFromDB(k);
+                    const current = await getSettingFromDB(k);
+                    if (v && !current) await saveSettingToDB(k, v);
+                }
+                localStorage.setItem('boxce_migrated_v1', '1');
+                if (localApps.length) showToast("បាននាំទិន្ន័យចាស់ " + localApps.length + " ចូល Server រួចរាល់");
+            } catch (err) { console.error('Migration skipped:', err); }
+        }
+
+        // CANVAS ANIMATION (DOLLAR & DIAMONDS FALLING)
+        function initFallingAnimation() {
+            const canvas = document.getElementById('fallingCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const items = ['💸', '💎'];
+            const itemCount = 35;
+            const particles = [];
+
+            for (let i = 0; i < itemCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    text: items[Math.floor(Math.random() * items.length)],
+                    size: Math.random() * 18 + 14,
+                    speedY: Math.random() * 1.5 + 0.8,
+                    speedX: Math.random() * 0.8 - 0.4,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotSpeed: (Math.random() - 0.5) * 0.03,
+                    opacity: Math.random() * 0.6 + 0.4
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let p of particles) {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.rotSpeed;
+
+                    if (p.y > canvas.height + 30) {
+                        p.y = -30;
+                        p.x = Math.random() * canvas.width;
+                    }
+                    if (p.x > canvas.width + 30) p.x = -30;
+                    if (p.x < -30) p.x = canvas.width + 30;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rotation);
+                    ctx.globalAlpha = p.opacity;
+                    ctx.font = `${p.size}px sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(p.text, 0, 0);
+                    ctx.restore();
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // FORM & VALIDATION LOGIC
+        function updateCharCounter() {
+            const val = document.getElementById('regMotivation').value;
+            const counter = document.getElementById('charCounter');
+            const err = document.getElementById('motivationErr');
+
+            counter.innerText = `${val.length} / 50 最小`;
+            if (val.length < 50) {
+                counter.classList.add('text-neonPink');
+                counter.classList.remove('text-neonGreen');
+            } else {
+                counter.classList.remove('text-neonPink');
+                counter.classList.add('text-neonGreen');
+                err.classList.add('hidden');
+            }
+        }
+
+        function selectRoleAndScroll(role) {
+            const radios = document.getElementsByName('regPosition');
+            for (let r of radios) {
+                if (r.value.includes(role)) r.checked = true;
+            }
+            scrollToRegister();
+        }
+
+        function scrollToRegister() {
+            document.getElementById('registerFormSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function handleRegistrationSubmit(e) {
+            e.preventDefault();
+
+            const motivationVal = document.getElementById('regMotivation').value;
+            if (motivationVal.length < 50) {
+                document.getElementById('motivationErr').classList.remove('hidden');
+                return;
+            }
+
+            const positions = document.getElementsByName('regPosition');
+            let selectedPos = 'Website Promoter';
+            for (let p of positions) {
+                if (p.checked) selectedPos = p.value;
+            }
+
+            const newApp = {
+                id: 'APP-' + Date.now(),
+                accountName: document.getElementById('regAccountName').value,
+                accountLink: document.getElementById('regAccountLink').value,
+                nickname: document.getElementById('regNickname').value,
+                videoLink: document.getElementById('regVideoLink').value,
+                position: selectedPos,
+                motivation: motivationVal,
+                date: new Date().toLocaleString('km-KH'),
+                status: 'Pending',
+                adminNotes: ''
+            };
+
+            await saveApplicationToDB(newApp);
+
+            document.getElementById('publicRegisterForm').reset();
+            updateCharCounter();
+
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // ADMIN PANEL & LOGO MANAGEMENT
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        async function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPasswordInput').value;
+
+            // Password is verified securely on the server
+            if (await verifyAdminPassword(pass)) {
+                ADMIN_PASSWORD = pass;
+                document.getElementById('adminLoginView').classList.add('hidden');
+                document.getElementById('adminDashboardView').classList.remove('hidden');
+                document.getElementById('adminDashboardView').classList.add('flex');
+                document.getElementById('loginErrorMsg').classList.add('hidden');
+                await migrateLocalDataToServer();
+                renderAdminApplications();
+            } else {
+                document.getElementById('loginErrorMsg').classList.remove('hidden');
+            }
+        }
+
+        function adminLogout() {
+            ADMIN_PASSWORD = '';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminDashboardView').classList.add('hidden');
+            document.getElementById('adminDashboardView').classList.remove('flex');
+            document.getElementById('adminLoginView').classList.remove('hidden');
+        }
+
+        function switchAdminTab(tab) {
+            if (tab === 'apps') {
+                document.getElementById('adminTabApps').classList.remove('hidden');
+                document.getElementById('adminTabSettings').classList.add('hidden');
+                document.getElementById('tabAppsBtn').className = "pb-2 border-b-2 border-neonBlue text-neonBlue";
+                document.getElementById('tabSettingsBtn').className = "pb-2 border-b-2 border-transparent text-slate-400 hover:text-white";
+            } else {
+                document.getElementById('adminTabApps').classList.add('hidden');
+                document.getElementById('adminTabSettings').classList.remove('hidden');
+                document.getElementById('tabAppsBtn').className = "pb-2 border-b-2 border-transparent text-slate-400 hover:text-white";
+                document.getElementById('tabSettingsBtn').className = "pb-2 border-b-2 border-neonBlue text-neonBlue";
+            }
+        }
+
+        async function renderAdminApplications() {
+            const apps = await getAllApplicationsFromDB();
+            const search = document.getElementById('adminSearchInput').value.toLowerCase();
+            const filterStatus = document.getElementById('adminStatusFilter').value;
+
+            document.getElementById('appCountBadge').innerText = apps.length;
+
+            const filtered = apps.filter(a => {
+                const matchSearch = a.nickname.toLowerCase().includes(search) || a.accountName.toLowerCase().includes(search);
+                const matchStatus = (filterStatus === 'ALL') || (a.status === filterStatus);
+                return matchSearch && matchStatus;
+            });
+
+            const container = document.getElementById('applicationsContainer');
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-500 text-xs">
+                        <i class="fa-solid fa-inbox text-3xl mb-2 block"></i>
+                        មិនមានទិន្នន័យពាក្យស្នើសុំឡើយ
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(app => `
+                <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-neonBlue/40 transition text-xs relative space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                        <span class="px-2 py-0.5 rounded-full font-bold text-[10px] uppercase bg-neonBlue/20 text-neonBlue border border-neonBlue/40">
+                            ${app.position}
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] text-slate-400">${app.date}</span>
+                            <select onchange="updateAppStatus('${app.id}', this.value)" class="bg-slate-950 border border-slate-700 text-[10px] text-white rounded px-2 py-0.5">
+                                <option value="Pending" ${app.status==='Pending'?'selected':''}>Pending</option>
+                                <option value="Under Review" ${app.status==='Under Review'?'selected':''}>Under Review</option>
+                                <option value="Approved" ${app.status==='Approved'?'selected':''}>Approved</option>
+                                <option value="Rejected" ${app.status==='Rejected'?'selected':''}>Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-slate-200">
+                        <div><strong>Nickname:</strong> <span class="text-neonGreen">${app.nickname}</span></div>
+                        <div><strong>Account:</strong> ${app.accountName}</div>
+                        <div class="truncate"><strong>Link:</strong> <a href="${app.accountLink}" target="_blank" class="text-neonBlue underline">${app.accountLink}</a></div>
+                        <div class="truncate"><strong>Video:</strong> <a href="${app.videoLink}" target="_blank" class="text-neonPink underline">${app.videoLink}</a></div>
+                    </div>
+
+                    <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-[11px] text-slate-300">
+                        <strong class="text-eggYolk block mb-0.5">មូលហេតុ/ការប្តេជ្ញាចិត្ត៖</strong>
+                        ${app.motivation}
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                        <input type="text" placeholder="បន្ថែម Admin Note..." value="${app.adminNotes || ''}" 
+                               onchange="updateAdminNote('${app.id}', this.value)"
+                               class="bg-slate-950 border border-slate-800 rounded px-2 py-1 text-[11px] text-slate-300 w-2/3">
+                        
+                        <button onclick="deleteAppRecord('${app.id}')" class="px-2.5 py-1 rounded bg-rose-950/80 border border-rose-700 text-rose-300 hover:bg-rose-900 text-[11px]">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function updateAppStatus(id, newStatus) {
+            const apps = await getAllApplicationsFromDB();
+            const app = apps.find(a => a.id === id);
+            if (app) {
+                app.status = newStatus;
+                await saveApplicationToDB(app);
+                showToast("បានប្តូរ Status រួចរាល់");
+            }
+        }
+
+        async function updateAdminNote(id, noteVal) {
+            const apps = await getAllApplicationsFromDB();
+            const app = apps.find(a => a.id === id);
+            if (app) {
+                app.adminNotes = noteVal;
+                await saveApplicationToDB(app);
+                showToast("បានរក្សាទុក Admin Note");
+            }
+        }
+
+        async function deleteAppRecord(id) {
+            if (confirm("តើអ្នកពិតជាចង់លុបទិន្នន័យនេះមែនទេ?")) {
+                await deleteApplicationFromDB(id);
+                renderAdminApplications();
+                showToast("បានលុបទិន្នន័យជោគជ័យ", "info");
+            }
+        }
+
+        async function exportApplicationsCSV() {
+            const apps = await getAllApplicationsFromDB();
+            if (apps.length === 0) {
+                alert("គ្មានទិន្នន័យសម្រាប់ Export ទេ");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,ID,Nickname,AccountName,Position,Status,AccountLink,VideoLink,Date\n";
+            apps.forEach(a => {
+                csvContent += `"${a.id}","${a.nickname}","${a.accountName}","${a.position}","${a.status}","${a.accountLink}","${a.videoLink}","${a.date}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `BoxCe_Applications_${Date.now()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // SAVE & LOAD LOGO IN INDEXEDDB
+        async function saveNewLogo() {
+            const fileInput = document.getElementById('logoFileInput');
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    const base64Img = e.target.result;
+                    await saveSettingToDB('customLogo', base64Img);
+                    applyLogoToUI(base64Img);
+                    showToast("បានរក្សាទុក Logo ថ្មីជោគជ័យ!");
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("សូមជ្រើសរើសរូបភាព Logo ជាមុនសិន!");
+            }
+        }
+
+        function applyLogoToUI(logoDataUrl) {
+            if (!logoDataUrl) return;
+            const wrapper = document.getElementById('headerLogoWrapper');
+            wrapper.innerHTML = `<img src="${logoDataUrl}" class="w-full h-full object-cover rounded-[10px]">`;
+
+            const adminPreview = document.getElementById('adminLogoPreview');
+            const adminPlaceholder = document.getElementById('adminLogoPlaceholder');
+            adminPreview.src = logoDataUrl;
+            adminPreview.classList.remove('hidden');
+            adminPlaceholder.classList.add('hidden');
+        }
+
+        async function saveSiteSettings() {
+            const tg = document.getElementById('settingTelegram').value;
+            const fb = document.getElementById('settingFacebook').value;
+
+            await saveSettingToDB('telegramLink', tg);
+            await saveSettingToDB('facebookLink', fb);
+
+            document.getElementById('telegramLinkBtn').href = tg;
+            document.getElementById('facebookLinkBtn').href = fb;
+
+            showToast("បានរក្សាទុកការកំណត់ Site រួចរាល់!");
+        }
+
+        async function loadSiteSettings() {
+            const savedLogo = await getSettingFromDB('customLogo');
+            if (savedLogo) applyLogoToUI(savedLogo);
+
+            const tg = await getSettingFromDB('telegramLink');
+            const fb = await getSettingFromDB('facebookLink');
+
+            if (tg) {
+                document.getElementById('telegramLinkBtn').href = tg;
+                document.getElementById('settingTelegram').value = tg;
+            }
+            if (fb) {
+                document.getElementById('facebookLinkBtn').href = fb;
+                document.getElementById('settingFacebook').value = fb;
+            }
+        }
+
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 3200);
+        }
+
+        function goHome() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // INITIALIZATION
+        window.onload = async function() {
+            try { await initDB(); } catch (err) { console.warn('Local DB unavailable', err); }
+            initFallingAnimation();
+            await loadSiteSettings();
+        };
+    </script>
+</body>
+</html>
